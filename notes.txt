@@ -1,0 +1,48 @@
+validator.js npm file - for validate email
+npm i cookie-parser -  for access cookies from browser usinf req.cookies
+password- select: false - acces only sectected fields only
+get secret key - random keygen website
+cookies - cookies la token na store panna easy ya authorise pannanalam authorization onnum ezhutha thevai illa
+httponly-true - javascript la cookies acces panna mudiyathu http nala mattum than acces panna mudiyum
+unique-true  - itu email elllam oru email mattum than iruka allow pannum
+mailtrap website - for handling mails for testing emails - nammakita email server illana intha website use panna pothum
+validateBeforeSave: false - ithu email aor validate use pannuthai ellam validate pannama save panrathuku
+req.protocol-  http or https
+req.get('host')-  get the host name of the server
+user.resetPasswordToken = undefined; // ippadi use panna mongodb resetbasswordToken ah remove pannum undefined use panna data db la irukathu
+utility function - thirumpa thirumpa use panrathu means utility
+isModified - ithu true illena false ah retutn pannum value mathepaterintha true ah return pannum mathelena false ah return pannum . apdina value iruntha mattum than hash pannnaum illena return pannanum
+reset password - reset function ah call pannumpothu resetPasswordToken same ah irukanum naama anuputha hashed token kuda appam than maatha mudiyum 
+resetPasswordExpireToken - token expire aagalena current time ah vida greterThan aah than irukkum - $gt - date.now() - grater than to current time
+`Object.keys(err.keyValue)` returns an array of keys, e.g., ["email"],
+populate - ref ah vachu oru user oda detail eduka entha value llam venumo atha type panni edukanum example - populate('user', 'name email')
+toString() - objectId ya string aaka use pannrathu
+await new promise (resolve => setTimeout (resolve , 3000))  - for delaying api request
+countDocuments () - ethana documents irukithu ennu count panna use panrathu
+multer - to handle multipart-formData
+__filename provides the absolute path to the current module file.
+__dirname provides the absolute path to the directory containing the current module file.
+express.static() - It provides a simple and efficient way to handle files such as images and other static resources .
+(app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+This setup allows you to serve static files from a specific directory (uploads in this case) through a URL path (/uploads). This is useful for serving user-uploaded files, such as images, directly to clients.)
+
+stripe :
+   npm i stripe
+   stripe.apiKey = 'YOUR_STRIPE_API_KEY';
+   const stripe = require('stripe')('YOUR_STRIPE_API_KEY');
+
+   fisrt create a paymentIntent
+   stripe secret key ya vachu controller uruvaakanum
+   stripe api key ya frontEnd ku send pannanum
+   client_secret: paymentIntent.client_secret - client secret ellam ithila irukkum athu oru token pola genarate panni tharum
+   atha api valiya frontend la et pannanum
+   strip-api-key - itha frontend straite aavum kudukkalam ippadi api create pannama
+   format ah maintain pannanum apdina shipping na intha format la irukanum ippadi condition atha maintainpannanum illena error adikkum
+   
+
+
+
+
+
+
+
