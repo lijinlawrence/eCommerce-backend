@@ -41,15 +41,33 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // to conv
 
 
 // Define a route for the root URL
-app.get('/', (req, res) => {
-    res.send('Hello world');
-});
+// app.get('/', (req, res) => {
+//     res.send('Hello world');
+// });
 
 // Use the product, user, and order routes
 app.use('/api/v1', productRoute);
 app.use('/api/v1', userRoute);
 app.use('/api/v1', orderRoute);
 app.use('/api/v1', paymentRoute);
+
+// Get the current file path and directory
+
+
+// Serve the static files from the "dist" folder (React/Vite build output)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../../frontend/dist')));
+
+  // For any route that doesn't match an API route, send back the frontend's index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../frontend/dist/index.html'));
+  });
+}
+
+console.log(process.env.NODE_ENV);
+console.log(express.static(path.join(__dirname, '../../frontend/dist/')));
+
+
 
 // Use custom error middleware
 app.use(errorMiddleware);

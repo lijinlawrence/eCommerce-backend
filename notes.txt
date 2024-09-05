@@ -40,7 +40,12 @@ stripe :
    format ah maintain pannanum apdina shipping na intha format la irukanum ippadi condition atha maintainpannanum illena error adikkum
 
 upload.array('images') - if you  want one more images to upload using this   
-   
+
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../frontend/dist/index.html'));
+  }) : frontend and backend ore port la runpanrathuku
+
 
 
 
