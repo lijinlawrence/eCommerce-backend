@@ -98,7 +98,7 @@ export const updateOrder =  catchAsyncError(async (req, res, next) => {
     }
     //Updating the product stock of each order item
     order.orderItems.forEach(async orderItem => {
-        await updateStock(orderItem.product, orderItem.quantity)
+        await updateStock(orderItem.productId, orderItem.quantity)
     })
 
     order.orderStatus = req.body.orderStatus;

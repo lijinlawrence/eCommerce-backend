@@ -38,6 +38,8 @@ stripe :
    atha api valiya frontend la et pannanum
    strip-api-key - itha frontend straite aavum kudukkalam ippadi api create pannama
    format ah maintain pannanum apdina shipping na intha format la irukanum ippadi condition atha maintainpannanum illena error adikkum
+
+upload.array('images') - if you  want one more images to upload using this   
    
 
 

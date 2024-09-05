@@ -12,6 +12,9 @@ export const registerUser = catchAsyncError(async (req, res, next) => {
 
   let avatar = null;
   let BASE_URL = process.env.BACKEND_URL;
+  if(process.env.NODE_ENV === "production"){
+    BASE_URL = `${req.protocol}://${req.get('host')}`
+  }
 
   if (req.file) {
     avatar = `${BASE_URL}/uploads/user/${req.file.originalname}`; // original name of th file
@@ -88,9 +91,14 @@ export const forgetPassword = catchAsyncError(async (req, res, next) => {
   const resetToken = user.getResetToken();
   await user.save({ validateBeforeSave: false });
 
+  let BASE_URL = process.env.FRONTEND_URL;
+  if(process.env.NODE_ENV === "production"){
+      BASE_URL = `${req.protocol}://${req.get('host')}`
+  }
+
   //Create reset url
   const resetUrl = `${
-  process.env.FRONTEND_URL
+    BASE_URL
   }/password/reset/${resetToken}`;
   console.log(resetUrl);
   
@@ -186,6 +194,10 @@ export const updateUserProfile = catchAsyncError(async (req, res, next) => {
 
   let avatar = null;
   let BASE_URL = process.env.BACKEND_URL;
+
+  if(process.env.NODE_ENV === "production"){
+    BASE_URL = `${req.protocol}://${req.get('host')}`
+  }
 
   if (req.file) {
     avatar = `${BASE_URL}/uploads/user/${req.file.originalname}`; // original name of th file

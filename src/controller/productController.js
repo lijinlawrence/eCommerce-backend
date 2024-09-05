@@ -3,11 +3,26 @@ import Products from "../model/productModel.js";
 import APIFeatures from "../utils/apiFeatures.js";
 import ErrorHandler from "../utils/errorHandler.js";
 
-// create Products-/api/v1/products/
+// admin - create Products-/api/v1/products/
 export const newProduct = catchAsyncError(async (req, res, next) => {
+  let images = [];
+  let BASE_URL = process.env.BACKEND_URL;
+  if(process.env.NODE_ENV === "production"){
+    BASE_URL = `${req.protocol}://${req.get('host')}`
+  }
+
+  if (req.files.length > 0) {
+    req.files.forEach((file) => {
+      let url = `${BASE_URL}/uploads/product/${file.originalname}`;
+      images.push({ image: url });
+    });
+  }
+  // console.log(images);
+
+  req.body.images = images;
   req.body.user = req.user.id;
-  const products = await Products.create(req.body);
-  res.status(201).json({ success: true, products });
+  const product = await Products.create(req.body);
+  res.status(201).json({ success: true, product });
 });
 
 //Get all products - /api/v1/products
@@ -19,19 +34,17 @@ export const getProducts = async (req, res, next) => {
     //   .search()
     //   .filter()
     //   .paginate(resPerPage);
-    let buildQuery = ()=>{
-      return new APIFeatures(Products.find(), req.query).search().filter()
-
-    }
-    const filteredProductsCount = await buildQuery().query.countDocuments({})
-    const totalProductsCount = await Products.countDocuments({});//to count rotal amount of data
-    let productsCount = totalProductsCount
-    if(filteredProductsCount !== totalProductsCount) {
+    let buildQuery = () => {
+      return new APIFeatures(Products.find(), req.query).search().filter();
+    };
+    const filteredProductsCount = await buildQuery().query.countDocuments({});
+    const totalProductsCount = await Products.countDocuments({}); //to count rotal amount of data
+    let productsCount = totalProductsCount;
+    if (filteredProductsCount !== totalProductsCount) {
       productsCount = filteredProductsCount;
-  }
-  
-  const products = await buildQuery().paginate(resPerPage).query;
+    }
 
+    const products = await buildQuery().paginate(resPerPage).query;
 
     res.status(200).json({
       success: true,
@@ -49,7 +62,10 @@ export const getProducts = async (req, res, next) => {
 
 export const getSingleProduct = async (req, res, next) => {
   try {
-    const product = await Products.findById(req.params.id);
+    const product = await Products.findById(req.params.id).populate(
+      "reviews.user",
+      "name email"
+    );
 
     if (!product) {
       // return res
@@ -65,11 +81,33 @@ export const getSingleProduct = async (req, res, next) => {
   }
 };
 
-// update product-/api/v1/product/:id
+// Admin - update product-/api/v1/product/:id
 
 export const updateProduct = async (req, res, next) => {
+  
   try {
     const product = await Products.findById(req.params.id);
+    //uploading images
+    let images = [];
+
+    //if images not cleared we keep existing images
+    if (req.body.imagesCleared === "false") {
+      images = product.images;
+    }
+
+    let BASE_URL = process.env.BACKEND_URL;
+    if(process.env.NODE_ENV === "production"){
+      BASE_URL = `${req.protocol}://${req.get('host')}`
+    }
+
+    if (req.files.length > 0) {
+      req.files.forEach((file) => {
+        let url = `${BASE_URL}/uploads/product/${file.originalname}`;
+        images.push({ image: url });
+      });
+    }
+    // console.log(images);
+    req.body.images = images;
 
     if (!product) {
       return res
@@ -199,3 +237,15 @@ export const deleteReview = catchAsyncError(async (req, res, next) => {
     message: "Review Deleted Succesfully",
   });
 });
+
+// admin :get admin Products -
+
+export const getAdminProducts = catchAsyncError(async (req, res, next) => {
+  const products = await Products.find();
+  res.status(200).send({
+    success: true,
+    products,
+  });
+});
+
+//admin - create product
