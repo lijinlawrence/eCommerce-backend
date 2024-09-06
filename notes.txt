@@ -47,6 +47,12 @@ upload.array('images') - if you  want one more images to upload using this
   }) : frontend and backend ore port la runpanrathuku
 
 
+  AWS :
+     create AWS account
+     search ec2
+     cretae a instances - means a computer
+
+
 
 
 
