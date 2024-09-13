@@ -2,14 +2,14 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
+    "start": "node index.js",
     "seeder": "node src/utils/seeder.js",
-    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
-    "prod": "cross-env NODE_ENV=production node src/index.js"
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "prod": "cross-env NODE_ENV=production node index.js"
   },
   "keywords": [],
   "author": "",
