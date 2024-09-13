@@ -29,19 +29,41 @@ app.use(express.json());
 app.use(cookieparser());
 
 // Middleware to enable CORS
-app.use(cors({
-    origin: 'https://e-commerce-frontend-eb54eh6br-lijinlawrences-projects.vercel.app/', // Your frontend URL
-    // origin: 'http://localhost:5173', // Your frontend URL
+// app.use(cors({
+//     // origin: 'https://e-commerce-frontend-eb54eh6br-lijinlawrences-projects.vercel.app/', // Your frontend URL
+//     origin: ['http://localhost:5173',
+//       'https://e-commerce-frontend-eb54eh6br-lijinlawrences-projects.vercel.app/'
+//     ] ,// Your frontend URL
 
-    credentials: true
-  }));
+//     credentials: true
+//   }));
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://e-commerce-frontend-eb54eh6br-lijinlawrences-projects.vercel.app'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+          const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+          return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+  },
+  credentials: true
+}));
+
+
 
 // Get the current file path and directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Serve static files from the uploads directory
-app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // to convert upload file to static folder for handling images
+app.use('/uploads', express.static(path.join(__dirname, 'src/uploads'))); // to convert upload file to static folder for handling images
 
 
 // Define a route for the root URL
