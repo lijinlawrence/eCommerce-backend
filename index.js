@@ -32,8 +32,9 @@ app.use(cookieparser());
 app.use(cors({
     // origin: 'https://e-commerce-frontend-eb54eh6br-lijinlawrences-projects.vercel.app/', // Your frontend URL
     origin: [
-      // 'http://localhost:5173',
-      'https://e-commerce-frontend-ten-bice.vercel.app/'
+      'http://localhost:5173',
+      'https://e-commerce-frontend-ten-bice.vercel.app',
+      "https://e-commerce-dda70.web.app"
     ] ,// Your frontend URL
 
     credentials: true
