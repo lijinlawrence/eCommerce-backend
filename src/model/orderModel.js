@@ -101,4 +101,4 @@ const orderSchema = mongoose.Schema({
 
 const Orders = mongoose.model('Order', orderSchema);
 
-export default Orders
+export default Orders   

@@ -28,7 +28,9 @@ app.use(cookieparser());
 
 // Middleware to enable CORS
 app.use(cors({
-    origin: 'http://localhost:5173', // Your frontend URL
+    origin: 'https://e-commerce-frontend-eb54eh6br-lijinlawrences-projects.vercel.app/', // Your frontend URL
+    // origin: 'http://localhost:5173', // Your frontend URL
+
     credentials: true
   }));
 

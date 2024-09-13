@@ -4,7 +4,6 @@ import catchAsyncError from "../middlewares/catchAsyncError.js";
 import responses from "../utils/response.js";
 import sendEmail from "../utils/email.js";
 import { createHash } from "crypto";
-import { log } from "console";
 
 // Register user - /api/v1/register
 export const registerUser = catchAsyncError(async (req, res, next) => {
