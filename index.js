@@ -80,18 +80,18 @@ app.use('/api/v1', paymentRoute);
 // Get the current file path and directory
 
 
-// Serve the static files from the "dist" folder (React/Vite build output)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../../frontend/dist')));
+// // Serve the static files from the "dist" folder (React/Vite build output)
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
-  // For any route that doesn't match an API route, send back the frontend's index.html
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../frontend/dist/index.html'));
-  });
-}
+//   // For any route that doesn't match an API route, send back the frontend's index.html
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../../frontend/dist/index.html'));
+//   });
+// }
 
-console.log(process.env.NODE_ENV);
-console.log(express.static(path.join(__dirname, '../../frontend/dist/')));
+// console.log(process.env.NODE_ENV);
+// console.log(express.static(path.join(__dirname, '../../frontend/dist/')));
 
 
 
