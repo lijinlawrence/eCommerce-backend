@@ -6,11 +6,9 @@
         "ratings": 4.5,
         "images": [
             {
-                "image": "/src/assets/images/products/1.jpg"
-            },
-            {
-                "image": "/src/assets/images/products/2.jpg"
+                "image": "http://ecommerce-backend-fs90.onrender.com/uploads/product/1.jpg"
             }
+           
         ],
         "category": "Mobile Phones",
         "seller": "Amazon",
@@ -25,7 +23,7 @@
         "ratings": 3.5,
         "images": [
             {
-                "image": "/src/assets/images/products/3.jpg"
+                "image": "http://ecommerce-backend-fs90.onrender.com/uploads/product/2.jpg"
             }
         ],
         "category": "Accessories",
@@ -41,7 +39,7 @@
         "ratings": 2,
         "images": [
             {
-                "image": "/src/assets/images/products/4.jpg"
+                "image": "http://ecommerce-backend-fs90.onrender.com/uploads/product/7.jpg"
             }
         ],
         "category": "Laptops",
@@ -57,7 +55,7 @@
         "ratings": 4,
         "images": [
           {
-            "image": "/src/assets/images/products/5.jpg"
+            "image": "http://ecommerce-backend-fs90.onrender.com/uploads/product/3.jpg"
           }
         ],
         "category": "Laptops",
@@ -73,7 +71,7 @@
         "ratings": 5,
         "images": [
           {
-            "image": "/src/assets/images/products/6.jpg"
+            "image": "http://ecommerce-backend-fs90.onrender.com/uploads/product/6.jpg"
           }
         ],
         "category": "Laptops",
@@ -89,7 +87,7 @@
         "ratings": 5,
         "images": [
             {
-                "image": "/src/assets/images/products/7.jpg"
+                "image": "http://ecommerce-backend-fs90.onrender.com/uploads/product/4.jpg"
             }
         ],
         "category": "Headphones",
@@ -105,7 +103,7 @@
         "ratings": 3,
         "images": [
             {
-                "image": "/src/assets/images/products/7.jpg"
+                "image": "http://ecommerce-backend-fs90.onrender.com/uploads/product/5.jpg"
             }
         ],
         "category": "Sports",
